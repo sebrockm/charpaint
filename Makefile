@@ -10,4 +10,4 @@ test: default
 	./test characters.png characters.txt
 
 clean:
-	rm -f test
+	rm -f test *.jpg

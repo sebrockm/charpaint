@@ -19,34 +19,34 @@ int main(int argc, char** argv)
     CharacterMap map(argv[1], argv[2]);
 
     auto view = map["$"];
-    ImageData::Write(view, "dollar.png");
+    ImageData::Write(view, "dollar.jpg");
 
     view = map["Ü"];
-    ImageData::Write(view, "UE.png");
+    ImageData::Write(view, "UE.jpg");
 
     view = map["A"];
-    ImageData::Write(view, "A.png");
+    ImageData::Write(view, "A.jpg");
 
     view = map["a"];
-    ImageData::Write(view, "a.png");
+    ImageData::Write(view, "a.jpg");
 
     view = map["B"];
-    ImageData::Write(view, "B.png");
+    ImageData::Write(view, "B.jpg");
 
     view = map["b"];
-    ImageData::Write(view, "b.png");
+    ImageData::Write(view, "b.jpg");
 
     view = map["Y"];
-    ImageData::Write(view, "Y.png");
+    ImageData::Write(view, "Y.jpg");
 
     view = map["y"];
-    ImageData::Write(view, "y.png");
+    ImageData::Write(view, "y.jpg");
 
     view = map["+"];
-    ImageData::Write(view, "plus.png");
+    ImageData::Write(view, "plus.jpg");
 
     view = map["["];
-    ImageData::Write(view, "rect1.png");
+    ImageData::Write(view, "rect1.jpg");
 
     return 0;
 }
