@@ -44,19 +44,19 @@ public:
                 if (c >= 0xf0)
                     mb += line[++j];
 
-                std::cout << mb;
-
                 if (_table.find(mb) != _table.end())
                     throw std::invalid_argument("'" + mb + "' appears twice in '" + characterFile + "'.");
-                _table[mb] = { i, mbCount++ };
+                _table[mb] = { mbCount++, i };
             }
-            std::cout << std::endl;
         }
     }
 
     auto operator[](std::string const& mb)
     {
         auto pos = _table.at(mb);
-        return pos;
+        auto width = _data.GetView().width();
+        auto height = _data.GetView().height();
+
+        return _data.GetView(width / 26, height / 4, pos.x, pos.y);
     }
 };
