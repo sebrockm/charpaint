@@ -7,7 +7,7 @@ default: test.cpp $(HH)
 	$(CC) test.cpp $(FLAGS) $(LIB) -o test
 
 test: default
-	./test characters.png characters.txt
+	./test Ingress.png characters.png characters.txt
 
 clean:
 	rm -f test *.jpg

@@ -12,8 +12,8 @@ using namespace boost;
 class ImageData
 {
 private:
-    enum { jpg, png } _type;
-    using Image = gil::gray8_image_t; gil::gray8c_view_t a;
+    enum { jpg, png };
+    using Image = gil::gray8_image_t;
     Image _image;
 
     static auto GetTypeOfFile(std::string const& fileName)
@@ -42,7 +42,17 @@ public:
         return gil::const_view(_image);
     }
 
+    auto GetView()
+    {
+        return gil::view(_image);
+    }
+
     auto GetView(int xTileSize, int yTileSize, int xIndex, int yIndex) const
+    {
+        return gil::subimage_view(GetView(), xTileSize * xIndex, yTileSize * yIndex, xTileSize, yTileSize);
+    }
+
+    auto GetView(int xTileSize, int yTileSize, int xIndex, int yIndex)
     {
         return gil::subimage_view(GetView(), xTileSize * xIndex, yTileSize * yIndex, xTileSize, yTileSize);
     }

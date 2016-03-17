@@ -1,24 +1,20 @@
 #include "ImageData.hpp"
 #include "CharacterMap.hpp"
 #include "ImageCompare.hpp"
+#include "ImageBuilder.hpp"
 
 #include <iostream>
 #include <fstream>
 
 int main(int argc, char** argv)
 {
-    if (argc != 3)
+    if (argc != 4)
     {
-        std::cerr << "usage: " << argv[0] << " <image.png/jpg> <characters.txt>" << std::endl;
+        std::cerr << "usage: " << argv[0] << " <original.png/jpg> <characterimage.png/jpg> <characters.txt>" << std::endl;
         return 1;
     }
     
-    CharacterMap map(argv[1], argv[2]);
-
-    auto a = map["a"];
-    auto ae = map[" "];
-
-    std::cout << NormDifference()(a, ae) << std::endl;
+    ImageData::Write(ImageBuilder(argv[1], argv[2], argv[3]).GetResultView(), std::string("out_") + argv[1]);
 
     return 0;
 }

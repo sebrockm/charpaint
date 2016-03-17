@@ -70,10 +70,8 @@ public:
     auto operator[](std::string const& mb)
     {
         auto pos = _table.at(mb);
-        auto width = _data.GetView().width();
-        auto height = _data.GetView().height();
 
-        return _data.GetView(width / _textWidth, height / _textHeight, pos.x, pos.y);
+        return _data.GetView(GetCharacterImageWidth(), GetCharacterImageHeight(), pos.x, pos.y);
     }
 
     size_t GetCharacterCount() const
@@ -89,5 +87,15 @@ public:
     auto end() const
     {
         return _utf8Chars.end();
+    }
+
+    int GetCharacterImageHeight() const
+    {
+        return _data.GetView().height() / _textHeight;
+    }
+
+    int GetCharacterImageWidth() const
+    {
+        return _data.GetView().width() / _textWidth;
     }
 };
