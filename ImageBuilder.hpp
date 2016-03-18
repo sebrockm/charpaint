@@ -17,8 +17,8 @@ private:
     int _resultWidth;
 
 public:
-    ImageBuilder(std::string const& originalFile, std::string const& characterImageFile, std::string const& characterFile)
-        : _originalImage(originalFile), _characterMap(characterImageFile, characterFile)
+    ImageBuilder(std::string const& originalFile, std::string const& characterImageFile, std::string const& characterFile, bool invertCharacters)
+        : _originalImage(originalFile), _characterMap(characterImageFile, characterFile, invertCharacters)
     {
         auto charHeight = _characterMap.GetCharacterImageHeight();
         auto charWidth = _characterMap.GetCharacterImageWidth();

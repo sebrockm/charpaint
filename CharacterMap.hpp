@@ -39,8 +39,8 @@ private:
     }
 
 public:
-    CharacterMap(std::string const& imageFile, std::string const& characterFile)
-        : _data(imageFile)
+    CharacterMap(std::string const& imageFile, std::string const& characterFile, bool invertCharacters)
+        : _data(imageFile, invertCharacters)
     {
         std::ifstream file(characterFile);
         if (!file)

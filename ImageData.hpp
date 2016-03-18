@@ -27,14 +27,26 @@ private:
         throw std::invalid_argument("'" + fileName + "' is neither a jpeg nor a png file");
     }
 
+    struct InvertGray
+    {
+        template <class Pixel>
+        void operator()(Pixel& pixel) const
+        {
+            pixel[0] = 255 - pixel[0];
+        }
+    };
+
 public:
-    ImageData(std::string const& fileName)
+    ImageData(std::string const& fileName, bool inverted = false)
     {
         switch (GetTypeOfFile(fileName))
         {
         case jpg: gil::jpeg_read_and_convert_image(fileName, _image); break;
         case png: gil::png_read_and_convert_image(fileName, _image); break;
         }
+
+        if (inverted)
+            gil::for_each_pixel(gil::view(_image), InvertGray());
     }
 
     auto GetView() const
