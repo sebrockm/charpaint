@@ -13,6 +13,8 @@ private:
     ImageData _originalImage;
     CharacterMap _characterMap;
     NormDifference _comparator;
+    //AverageDifference _comparator;
+    //LowDifferenceCount _comparator;
     int _resultHeight;
     int _resultWidth;
 
